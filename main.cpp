@@ -21,7 +21,7 @@ std::vector<std::string> convertFromRegularQuery(const std::string& query)
     bool found = false;
     for ( std::size_t a = 0; a < query.size(); a++ )
     {
-        if ( query[a] != '`' )
+        if ( query[a] != '`' && query[a] != '"' )
         {
             if ( !found )
                 temp += query[a];
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     {
 
         std::cout << "Help: " << std::endl;
-        std::cout << "sqlite_to_java.exe [Create statement]";
+        std::cout << "sqlite_to_java.exe [\"Create statement\"]";
         std::cin.get();
     }
 
