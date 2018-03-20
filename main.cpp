@@ -49,7 +49,7 @@ void createJavaClass(const std::vector<std::string>& schema)
     std::ofstream of((schema[0] + ".txt").c_str());
     if ( of.is_open() )
     {
-        of << "public class Schema_" + schema[0] + " {" << std::endl;
+        of << "public class SCHEMA_" + schema[0] + " {" << std::endl;
         of << "public static final String TABLE_NAME = \"" + to_lower(schema[0]) + "\";" << std::endl;
         for ( std::size_t a = 1; a < schema.size() - 1; a++ )
         {
