@@ -55,7 +55,7 @@ void createJavaClass(const std::vector<std::string>& schema)
         {
             of << "public static final String " << schema[a] << " = \"" << to_lower(schema[a]) << "\";" << std::endl;
         }
-        of << "public static final String SCHEMA =\"" << schema[schema.size() - 1] << "\";" << std::endl;
+        of << "public static final String SCHEMA =" << schema[schema.size() - 1] << ";" << std::endl;
         of << "}";
         of.close();
     }
