@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     {
 
         std::cout << "Help: " << std::endl;
-        std::cout << "sqlite_to_java.exe [\"Create statement\"]";
+        std::cout << "exe [\"Create statement\"]";
         std::cin.get();
     }
 
