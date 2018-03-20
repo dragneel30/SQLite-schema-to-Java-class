@@ -19,6 +19,7 @@ std::vector<std::string> convertFromRegularQuery(const std::string& query)
     std::string temp = "\"";
     std::string field = "";
     bool found = false;
+    int field_counter = 0;
     for ( std::size_t a = 0; a < query.size(); a++ )
     {
         if ( query[a] != '`' && query[a] != '"' )
@@ -33,8 +34,9 @@ std::vector<std::string> convertFromRegularQuery(const std::string& query)
             found = !found;
             if(!found)
             {
+                field_counter++;
                 found = false;
-                temp += "\" + " + field + " + \"";
+                temp += "\" + " + (field_counter == 1 ? "TABLE_NAME" : field) + " + \"";
                 fields.push_back(field);
                 field = "";
             }
@@ -49,13 +51,13 @@ void createJavaClass(const std::vector<std::string>& schema)
     std::ofstream of((schema[0] + ".txt").c_str());
     if ( of.is_open() )
     {
-        of << "public class SCHEMA_" + schema[0] + " {" << std::endl;
+        of << "public class Schema_" << schema[0][0] << to_lower(schema[0].substr(1)) + " {" << std::endl;
         of << "public static final String TABLE_NAME = \"" + to_lower(schema[0]) + "\";" << std::endl;
         for ( std::size_t a = 1; a < schema.size() - 1; a++ )
         {
-            of << "public static final String TABLE_NAME = \"" << to_lower(schema[a]) << "\";" << std::endl;
+            of << "public static final String " << schema[a] << " = \"" << to_lower(schema[a]) << "\";" << std::endl;
         }
-        of << "public static final String SCHEMA =" << schema[schema.size() - 1] << ";" << std::endl;
+        of << "public static final String SCHEMA = " << schema[schema.size() - 1] << ";" << std::endl;
         of << "}";
         of.close();
     }
