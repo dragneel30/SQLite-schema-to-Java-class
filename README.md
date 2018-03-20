@@ -1,4 +1,4 @@
-# SQLite-to-Java
+# SQLite-schema-to-Java-class
 A utility I made for generating java class based from SQLite schema. 
 
 # Note:
