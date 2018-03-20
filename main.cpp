@@ -53,7 +53,7 @@ void createJavaClass(const std::vector<std::string>& schema)
         of << "public static final String TABLE_NAME = \"" + to_lower(schema[0]) + "\";" << std::endl;
         for ( std::size_t a = 1; a < schema.size() - 1; a++ )
         {
-            of << "public static final String " << schema[a] << " = \"" << to_lower(schema[a]) << "\";" << std::endl;
+            of << "public static final String TABLE_NAME = \"" << to_lower(schema[a]) << "\";" << std::endl;
         }
         of << "public static final String SCHEMA =" << schema[schema.size() - 1] << ";" << std::endl;
         of << "}";
