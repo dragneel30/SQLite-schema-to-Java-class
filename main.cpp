@@ -48,7 +48,7 @@ std::vector<std::string> convertFromRegularQuery(const std::string& query)
 }
 void createJavaClass(const std::vector<std::string>& schema)
 {
-    std::ofstream of((schema[0] + ".txt").c_str());
+    std::ofstream of((schema[0] + ".java").c_str());
     if ( of.is_open() )
     {
         of << "public class Schema_" << schema[0][0] << to_lower(schema[0].substr(1)) + " {" << std::endl;
